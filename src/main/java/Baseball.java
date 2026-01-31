@@ -1,6 +1,13 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Baseball {
+    private final Input input;
+
+    public Baseball() {
+        Scanner scanner = new Scanner(System.in);
+        this.input = new Input(scanner);;
+    }
 
     public void run() {
         boolean isContinue = true;
@@ -9,12 +16,12 @@ public class Baseball {
         }
     }
 
-    private static boolean playGame() {
+    private boolean playGame() {
         boolean isContinue;
         Computer computer = new Computer();
 
         while (true) {
-            ArrayList<Integer> numbers = Input.inputNumbers();
+            ArrayList<Integer> numbers = input.inputNumbers();
             Result result = computer.checkNumbers(numbers);
 
             if (result.isAllStrike()) {
@@ -24,7 +31,7 @@ public class Baseball {
             Output.printResult(result);
         }
 
-        isContinue = Input.inputContinue();
+        isContinue = input.inputContinue();
         return isContinue;
     }
 }
