@@ -1,13 +1,11 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class Computer {
     private final List<Integer> numbers;
 
-    public Computer() {
-        numbers = generateRandomNumbers();
+    public Computer(NumberGenerator generator) {
+        this.numbers = generator.generate();
     }
 
     public Result checkNumbers(List<Integer> inputNumbers) {
@@ -36,14 +34,5 @@ public class Computer {
             }
         }
         return count;
-    }
-
-    private List<Integer> generateRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i <= 9; i++) {
-            numbers.add(i);
-        }
-        Collections.shuffle(numbers);
-        return numbers.subList(0, 3);
     }
 }

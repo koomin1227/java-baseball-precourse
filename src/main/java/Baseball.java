@@ -17,9 +17,10 @@ public class Baseball {
     }
 
     private boolean playGame() {
-        boolean isContinue;
-        Computer computer = new Computer();
+        NumberGenerator generator = new RandomNumberGenerator();
+        Computer computer = new Computer(generator);
 
+        boolean isContinue;
         while (true) {
             ArrayList<Integer> numbers = input.inputNumbers();
             Result result = computer.checkNumbers(numbers);
